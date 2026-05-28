@@ -1,0 +1,178 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getGetInvolved} from '~/lib/queries'
+import {imgPath, btnClass} from '~/lib/util'
+
+const [siteData, d] = await Promise.all([getSite(), getGetInvolved()])
+const heroImg = imgPath(d?.heroImage, '/assets/gallery/orphanage-visit.jpg')
+const ways = (d?.ways?.length ? d.ways : []) as any[]
+const tiers = (d?.donateTiers?.length ? d.donateTiers : []) as any[]
+const partnerFeatures = (d?.partnerFeatures?.length ? d.partnerFeatures : []) as string[]
+const mvCards = (d?.mvCards?.length ? d.mvCards : []) as any[]
+const stats = (d?.stats?.length ? d.stats : []) as any[]
+const ctaButtons = (d?.ctaButtons?.length ? d.ctaButtons : []) as any[]
+
+const wayIcons: Record<string, string> = {
+  heart: 'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z',
+  share: 'M18 8a3 3 0 1 1-2.83-2H15a3 3 0 0 1 3 2zM9 12a3 3 0 1 1-3-3 3 3 0 0 1 3 3zm12 7a3 3 0 1 1-3-3 3 3 0 0 1 3 3zm-5.7-9.36l-5.6 3.22m0 4.28l5.6 3.22',
+  people: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  star: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+}
+---
+
+<Layout title={d?.seo?.title || "Get Involved — Toria's Hub"} description={d?.seo?.description} active="home" site={siteData}>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d?.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d?.heroTitleLine1 || 'Be part of'}<br/><span class="teal">{d?.heroTitleLine2 || 'the movement'}</span></h1>
+      {d?.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+{ways.length > 0 && (
+  <section class="ways-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.waysLabel && <span class="label">{d.waysLabel}</span>}
+        {d?.waysHeading && <h2 class="h2">{d.waysHeading}</h2>}
+      </div>
+      <div class="ways-grid">
+        {ways.map((w, i) => (
+          <a href={`#${w.anchor || ''}`} class="way-card" data-aos="fade-up" data-aos-delay={i * 80}>
+            <div class="way-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d={wayIcons[w.icon] || wayIcons.heart}/>
+              </svg>
+            </div>
+            <h3 class="way-title">{w.title}</h3>
+            <p class="way-desc">{w.description}</p>
+            <span class="way-arrow">{w.arrowLabel || 'Learn more'} <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{tiers.length > 0 && (
+  <section id="donate" class="donate-section">
+    <div class="container">
+      <div class="donate-header" data-aos="fade-up">
+        {d?.donateLabel && <span class="label">{d.donateLabel}</span>}
+        {d?.donateHeading && <h2 class="h2">{d.donateHeading}</h2>}
+        {d?.donateIntro && <p class="body-text">{d.donateIntro}</p>}
+      </div>
+      <div class="donate-grid">
+        {tiers.map((t, i) => (
+          <div class={`donate-card${t.featured ? ' donate-card-feature' : ''}`} data-aos="fade-up" data-aos-delay={i * 80}>
+            {t.featured && t.featuredLabel && <span class="donate-tier-flag">{t.featuredLabel}</span>}
+            <span class="donate-tier">{t.tierName}</span>
+            <span class="donate-amount">{t.amount} <span>{t.frequency}</span></span>
+            <p class="donate-impact">{t.impact}</p>
+            {t.perks?.length > 0 && (
+              <ul class="donate-list">
+                {t.perks.map((p: string) => <li>{p}</li>)}
+              </ul>
+            )}
+            {t.cta && (
+              <a href={t.cta.href} class={`${btnClass(t.cta, {style: t.featured ? 'teal' : 'outline'})} donate-btn`}>{t.cta.label}</a>
+            )}
+          </div>
+        ))}
+      </div>
+      {d?.donateCustom && (
+        <p class="donate-custom" data-aos="fade-up" set:html={d.donateCustom}/>
+      )}
+    </div>
+  </section>
+)}
+
+{(d?.partnerHeading || d?.partnerBody) && (
+  <section id="partner" class="partner-section">
+    <div class="container">
+      <div class="split-grid">
+        <div class="split-content" data-aos="fade-right">
+          {d.partnerLabel && <span class="label">{d.partnerLabel}</span>}
+          {d.partnerHeading && <h2 class="h2">{d.partnerHeading}</h2>}
+          {d.partnerBody && <p class="body-text">{d.partnerBody}</p>}
+          {partnerFeatures.length > 0 && (
+            <ul class="program-features" style="margin-top:2rem">
+              {partnerFeatures.map((f) => (
+                <li><span class="program-feat-bullet"></span>{f}</li>
+              ))}
+            </ul>
+          )}
+          {d.partnerCta && (
+            <div class="split-btns">
+              <a href={d.partnerCta.href} class={btnClass(d.partnerCta, {style: 'teal'})}>{d.partnerCta.label}</a>
+            </div>
+          )}
+        </div>
+        <div class="split-image-wrap" data-aos="fade-left">
+          <img src={imgPath(d.partnerImage, '/assets/gallery/community-meeting.jpg')} alt={d.partnerImageAlt || 'Partnership'}/>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{mvCards.length > 0 && (
+  <section class="mentor-volunteer-section">
+    <div class="container">
+      <div class="mv-grid">
+        {mvCards.map((c, i) => (
+          <div id={c.anchor} class="mv-card" data-aos="fade-up" data-aos-delay={i * 80}>
+            {c.label && <span class="label">{c.label}</span>}
+            <h3 class="mv-title">{c.title}</h3>
+            {c.description && <p class="mv-desc">{c.description}</p>}
+            {c.details?.length > 0 && (
+              <ul class="mv-list">
+                {c.details.map((d: any) => (
+                  <li><strong>{d.key}:</strong> {d.value}</li>
+                ))}
+              </ul>
+            )}
+            {c.cta && (
+              <a href={c.cta.href} class={btnClass(c.cta, {style: i === 0 ? 'teal' : 'outline'})}>{c.cta.label}</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{stats.length > 0 && (
+  <div class="stats-band">
+    {stats.map((s, i) => (
+      <div class="stat-card" data-aos="fade-up" data-aos-delay={i * 80}>
+        <span class="stat-num">{s.value}</span>
+        <span class="stat-label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+)}
+
+{(d?.ctaHeading || ctaButtons.length > 0) && (
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        {d?.ctaLabel && <span class="label" data-aos="fade-up">{d.ctaLabel}</span>}
+        {d?.ctaHeading && <h2 class="h2" data-aos="fade-up" data-aos-delay="60">{d.ctaHeading}</h2>}
+        {d?.ctaBody && <p class="body-text" data-aos="fade-up" data-aos-delay="120">{d.ctaBody}</p>}
+        <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+          {ctaButtons.map((b) => (
+            <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+</Layout>

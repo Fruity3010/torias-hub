@@ -1,0 +1,241 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getHome} from '~/lib/queries'
+import {home as homeDefaults} from '~/lib/defaults'
+import {imgPath, merge, btnClass} from '~/lib/util'
+
+const [siteData, homeData] = await Promise.all([getSite(), getHome()])
+const d = merge(homeDefaults, homeData)
+
+// Merge nested arrays in a forgiving way too.
+const heroSlides = (homeData?.heroSlides?.length ? homeData.heroSlides : homeDefaults.heroSlides) as any[]
+const heroCtas = (homeData?.heroCtas?.length ? homeData.heroCtas : homeDefaults.heroCtas) as any[]
+const stats = (homeData?.stats?.length ? homeData.stats : homeDefaults.stats) as any[]
+const missionParagraphs = (homeData?.missionParagraphs?.length ? homeData.missionParagraphs : homeDefaults.missionParagraphs) as string[]
+const missionCtas = (homeData?.missionCtas?.length ? homeData.missionCtas : homeDefaults.missionCtas) as any[]
+const programCards = (homeData?.programCards?.length ? homeData.programCards : homeDefaults.programCards) as any[]
+const philosophyCards = (homeData?.philosophyCards?.length ? homeData.philosophyCards : homeDefaults.philosophyCards) as any[]
+const storyCards = (homeData?.storyCards?.length ? homeData.storyCards : homeDefaults.storyCards) as any[]
+const ctaButtons = (homeData?.ctaButtons?.length ? homeData.ctaButtons : homeDefaults.ctaButtons) as any[]
+const partnersImages = (homeData?.partnersImages?.length ? homeData.partnersImages : homeDefaults.partnersImages) as any[]
+---
+
+<Layout title={d.seo?.title || homeDefaults.seo.title} description={d.seo?.description || homeDefaults.seo.description} active="home" site={siteData}>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-slideshow">
+    {heroSlides.map((s) => (
+      <div class="hero-slide" style={`background-image:url('${imgPath(s)}')`}></div>
+    ))}
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner">
+      {d.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="hero-title">
+        {d.heroTitleLine1}<br/>
+        <span class="teal">{d.heroTitleLine2}</span><br/>
+        {d.heroTitleLine3}
+      </h1>
+      {d.heroSubtitle && <p class="hero-sub">{d.heroSubtitle}</p>}
+      <div class="hero-actions">
+        {heroCtas.map((b) => (
+          <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  {stats.map((s, i) => (
+    <div class="stat-card" data-aos="fade-up" data-aos-delay={i * 80}>
+      <span class="stat-num">{s.value}</span>
+      <span class="stat-label">{s.label}</span>
+    </div>
+  ))}
+</div>
+
+<!-- PARTNERS -->
+{partnersImages.length > 0 && (
+  <section class="partners-wrap">
+    <p class="partners-label">{d.partnersLabel}</p>
+    <div class="partners-single">
+      {partnersImages.map((p) => (
+        <img src={imgPath(p.image)} alt={p.alt}/>
+      ))}
+    </div>
+  </section>
+)}
+
+<!-- MISSION -->
+<section class="mission-section" id="mission">
+  <div class="container">
+    <div class="split-grid">
+      <div class="split-image-wrap" data-aos="fade-right" data-aos-duration="900">
+        <img src={imgPath(d.missionImage)} alt={d.missionImageAlt}/>
+      </div>
+      <div class="split-content" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        {d.missionLabel && <span class="label">{d.missionLabel}</span>}
+        {d.missionHeading && <h2 class="h2">{d.missionHeading}</h2>}
+        {missionParagraphs.map((p, i) => (
+          <p class="body-text" style={i > 0 ? 'margin-top:1rem' : ''}>{p}</p>
+        ))}
+        <div class="split-btns">
+          {missionCtas.map((b) => (
+            b.href === '#lead'
+              ? <button onclick="openLeadModal('homepage')" class={btnClass(b, {style: 'outline'})}>{b.label}</button>
+              : <a href={b.href} class={btnClass(b, {style: 'outline'})}>{b.label}</a>
+          ))}
+        </div>
+        {d.awardTitle && (
+          <div class="award-badge" data-aos="zoom-in" data-aos-delay="400">
+            <div class="award-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 15l-2 5 2-1 2 1-2-5zm0-13C7.03 2 3 6.03 3 11c0 2.12.74 4.07 1.97 5.61L3 22l5-2 5 2 5-2 5 2-1.97-5.39C20.26 15.07 21 13.12 21 11c0-4.97-4.03-9-9-9z"/>
+                <circle cx="12" cy="11" r="4"/>
+              </svg>
+            </div>
+            <div class="award-text">
+              <strong>{d.awardTitle}</strong>
+              <span>{d.awardSubtitle}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS STACKING CARDS -->
+<section class="stacking-section" id="programs">
+  <div class="container">
+    <div class="stacking-header" data-aos="fade-up">
+      {d.programsLabel && <span class="label">{d.programsLabel}</span>}
+      {d.programsHeading && <h2 class="h2" style="margin-bottom:0">{d.programsHeading}</h2>}
+    </div>
+    <div class="stack-cards">
+      {programCards.map((c, i) => (
+        <div class={`stack-card${i % 2 === 1 ? ' flip' : ''}`}>
+          <div class="stack-content">
+            <div class="stack-num">{String(i + 1).padStart(2, '0')}</div>
+            {c.chip && <span class="stack-chip">{c.chip}</span>}
+            <h3 class="stack-title">{c.title}</h3>
+            <p class="stack-desc">{c.description}</p>
+            {c.cta && (
+              <a href={c.cta.href} class="stack-cta">
+                {c.cta.label}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            )}
+          </div>
+          <div class="stack-img">
+            <img src={imgPath(c.image)} alt={c.imageAlt}/>
+          </div>
+        </div>
+      ))}
+    </div>
+    {d.programsFooterCta && (
+      <div style="margin-top:3rem; text-align:center" data-aos="fade-up">
+        <a href={d.programsFooterCta.href} class={btnClass(d.programsFooterCta, {style: 'teal', size: 'lg'})}>{d.programsFooterCta.label}</a>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- PHILOSOPHY / ECOSYSTEM -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="philosophy-intro" data-aos="fade-up">
+      {d.philosophyLabel && <span class="label">{d.philosophyLabel}</span>}
+      {d.philosophyHeading && <h2 class="h2">{d.philosophyHeading}</h2>}
+      {d.philosophyIntro && <p class="body-text">{d.philosophyIntro}</p>}
+    </div>
+    <div class="gray-area">
+      {philosophyCards.map((p, i) => (
+        <div class="phil-card" data-aos="fade-up" data-aos-delay={i * 60}>
+          <div class="phil-num">{String(i + 1).padStart(2, '0')}</div>
+          <h3>{p.title}</h3>
+          <p>{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="stories-section" id="stories">
+  <div class="container">
+    <div class="stories-header">
+      <div data-aos="fade-right">
+        {d.storiesLabel && <span class="label">{d.storiesLabel}</span>}
+        {d.storiesHeading && <h2 class="h2" style="margin-bottom:0">{d.storiesHeading}</h2>}
+      </div>
+      <a href="/stories" class="btn btn-outline" data-aos="fade-left">
+        View All Impact Stories
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="stories-grid">
+      {storyCards.map((s, i) => (
+        <a href={s.link || '/stories'} class="story-card" data-aos="fade-up" data-aos-delay={i * 100}>
+          <img src={imgPath(s.image)} alt={s.imageAlt} class="story-img"/>
+          <div class="story-body">
+            <p class="story-cat">{s.category}</p>
+            <h3 class="story-title">{s.title}</h3>
+            <p class="story-desc">{s.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      {d.ctaLabel && <span class="label" data-aos="fade-up">{d.ctaLabel}</span>}
+      {d.ctaHeading && <h2 class="h2" data-aos="fade-up" data-aos-delay="60">{d.ctaHeading}</h2>}
+      {d.ctaBody && <p class="body-text" data-aos="fade-up" data-aos-delay="120">{d.ctaBody}</p>}
+      <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+        {ctaButtons.map((b) => (
+          <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE MODAL -->
+<div id="leadCaptureModal" class="lead-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+  <div class="lead-modal-card">
+    <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Close">&#x2715;</button>
+    <div class="lead-modal-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+      </svg>
+    </div>
+    <h2 class="lead-modal-title" id="leadModalTitle">{d.modalTitle}</h2>
+    <p class="lead-modal-sub">{d.modalSubtitle}</p>
+    <form id="leadCaptureForm" novalidate>
+      <div class="lead-form-group">
+        <label for="leadFirstName">First Name</label>
+        <input type="text" id="leadFirstName" name="firstName" class="lead-input" placeholder="e.g. Amina" autocomplete="given-name" required/>
+        <span class="lead-field-error" id="leadFirstNameError"></span>
+      </div>
+      <div class="lead-form-group">
+        <label for="leadEmail">Email Address</label>
+        <input type="email" id="leadEmail" name="email" class="lead-input" placeholder="you@example.com" autocomplete="email" required/>
+        <span class="lead-field-error" id="leadEmailError"></span>
+      </div>
+      <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">{d.modalButtonLabel}</button>
+    </form>
+    <p class="lead-modal-privacy">{d.modalPrivacyText}</p>
+  </div>
+</div>
+
+</Layout>

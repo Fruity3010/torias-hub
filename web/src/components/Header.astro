@@ -1,0 +1,57 @@
+---
+import {site as siteDefaults} from '~/lib/defaults'
+
+interface Props {
+  active?: 'home' | 'about' | 'programs' | 'stories' | 'contact'
+  site?: any
+}
+const {active = 'home', site} = Astro.props
+
+const data = {
+  ...siteDefaults,
+  ...(site || {}),
+}
+const links = data.navLinks?.length ? data.navLinks : siteDefaults.navLinks
+const cta = data.navCta || siteDefaults.navCta
+
+// Map a few labels to active markers so the editor doesn't have to do it.
+function isActive(label: string) {
+  const map: Record<string, string> = {
+    home: 'home',
+    about: 'about',
+    programs: 'programs',
+    insights: 'stories',
+    stories: 'stories',
+    contact: 'contact',
+  }
+  return map[label.toLowerCase()] === active
+}
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="nav-logo">{data.brandName}<span>{data.brandSuffix}</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        {links.map((l: any) => (
+          <li>
+            <a href={l.href} class={`nav-link ${isActive(l.label) ? 'active' : ''}`} onclick="closeMenu()">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a href={cta.href} class={`btn btn-${cta.style || 'teal'} btn-${cta.size || 'sm'} nav-cta`}>{cta.label}</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    {links.map((l: any) => (
+      <li><a href={l.href} onclick="closeMenu()">{l.label}</a></li>
+    ))}
+    <li><a href={cta.href} class="mob-cta">{cta.label}</a></li>
+  </ul>
+</div>

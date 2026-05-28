@@ -1,0 +1,137 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getPrograms} from '~/lib/queries'
+import {imgPath, btnClass} from '~/lib/util'
+
+const [siteData, d] = await Promise.all([getSite(), getPrograms()])
+const heroImg = imgPath(d?.heroImage, '/assets/gallery/school-visit.jpg')
+const pills = (d?.overviewPills?.length ? d.overviewPills : []) as any[]
+const programs = (d?.programs?.length ? d.programs : []) as any[]
+const nodes = (d?.pathwayNodes?.length ? d.pathwayNodes : []) as any[]
+const ctaButtons = (d?.ctaButtons?.length ? d.ctaButtons : []) as any[]
+---
+
+<Layout title={d?.seo?.title || "Programs — Toria's Hub"} description={d?.seo?.description} active="programs" site={siteData}>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d?.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d?.heroTitleLine1 || 'Programs'}<br/><span class="teal">{d?.heroTitleLine2 || ''}</span></h1>
+      {d?.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+{pills.length > 0 && (
+  <section class="programs-overview-section">
+    <div class="container">
+      <div class="programs-overview-grid">
+        {pills.map((p, i) => (
+          <a href={`#${p.anchorId}`} class="program-pill" data-aos="fade-up" data-aos-delay={i * 80}>
+            <span class="program-pill-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="program-pill-title">{p.title}</span>
+            <span class="program-pill-tag">{p.tag}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{programs.map((p, i) => {
+  const altClass = i % 2 === 0 ? ' program-detail-alt' : ''
+  const ctas = (p.ctas?.length ? p.ctas : []) as any[]
+  const features = (p.features?.length ? p.features : []) as string[]
+  return (
+    <section id={p.anchorId} class={`program-detail${altClass}`}>
+      <div class="container">
+        <div class="split-grid">
+          {!p.imageOnRight && (
+            <div class="split-image-wrap" data-aos="fade-right">
+              <img src={imgPath(p.image)} alt={p.imageAlt || p.title}/>
+            </div>
+          )}
+          <div class="split-content" data-aos={p.imageOnRight ? 'fade-right' : 'fade-left'}>
+            {p.chip && <span class="stack-chip">{p.chip}</span>}
+            <h2 class="h2" style="margin-top:1rem">{p.title}</h2>
+            {p.description && <p class="body-text">{p.description}</p>}
+            {features.length > 0 && (
+              <ul class="program-features">
+                {features.map((f) => (
+                  <li><span class="program-feat-bullet"></span>{f}</li>
+                ))}
+              </ul>
+            )}
+            {ctas.length > 0 && (
+              <div class="split-btns">
+                {ctas.map((b) => (
+                  <a href={b.href} class={btnClass(b, {style: 'teal'})}>{b.label}</a>
+                ))}
+              </div>
+            )}
+          </div>
+          {p.imageOnRight && (
+            <div class="split-image-wrap" data-aos="fade-left">
+              <img src={imgPath(p.image)} alt={p.imageAlt || p.title}/>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+})}
+
+{nodes.length > 0 && (
+  <section class="pathway-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.pathwayLabel && <span class="label">{d.pathwayLabel}</span>}
+        {d?.pathwayHeading && <h2 class="h2">{d.pathwayHeading}</h2>}
+        {d?.pathwayIntro && <p class="body-text">{d.pathwayIntro}</p>}
+      </div>
+      <div class="pathway" data-aos="fade-up">
+        <svg class="pathway-svg" viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"  stop-color="#33ab8f" stop-opacity="0.2"/>
+              <stop offset="50%" stop-color="#33ab8f" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#33ab8f" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <path d="M 50 100 Q 250 30 500 100 T 950 100" fill="none" stroke="url(#pathGrad)" stroke-width="2" stroke-dasharray="4 6"/>
+        </svg>
+        <div class="pathway-nodes">
+          {nodes.map((n, i) => (
+            <div class="pathway-node">
+              <div class="pathway-num">{String(i + 1).padStart(2, '0')}</div>
+              <div class="pathway-label">{n.label}</div>
+              <div class="pathway-sub">{n.subtitle}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{(d?.ctaHeading || ctaButtons.length > 0) && (
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        {d?.ctaLabel && <span class="label" data-aos="fade-up">{d.ctaLabel}</span>}
+        {d?.ctaHeading && <h2 class="h2" data-aos="fade-up" data-aos-delay="60">{d.ctaHeading}</h2>}
+        {d?.ctaBody && <p class="body-text" data-aos="fade-up" data-aos-delay="120">{d.ctaBody}</p>}
+        <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+          {ctaButtons.map((b) => (
+            <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+</Layout>

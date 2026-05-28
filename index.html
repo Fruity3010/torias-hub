@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toria's Hub equips African youth with digital skills, AI literacy, and mentorship to thrive in the evolving technology landscape.">
+  <title>Toria's Hub — Empowering African Youth in the Digital &amp; AI Economy</title>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="nav-logo">Toria's<span>Hub</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero"           class="nav-link active" onclick="closeMenu()">Home</a></li>
+        <li><a href="about.html"      class="nav-link">About</a></li>
+        <li><a href="programs.html"   class="nav-link">Programs</a></li>
+        <li><a href="stories.html"    class="nav-link">Insights</a></li>
+        <li><a href="contact.html"    class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="get-involved.html" class="btn btn-teal btn-sm nav-cta">GET INVOLVED</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile dropdown -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="stories.html">Insights</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="get-involved.html" class="mob-cta">Get Involved</a></li>
+  </ul>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-slideshow">
+    <div class="hero-slide" style="background-image:url('assets/gallery/speaking-event.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/school-visit.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/hero-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/speakers-network.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/girls-1.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/orphanage-visit.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/gallery/community-market.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">TE Limited &middot; Driving Media &amp; Creativity</span>
+      <h1 class="hero-title">
+        Building Brands.<br>
+        <span class="teal">Empowering People.</span><br>
+        Creating Impact.
+      </h1>
+      <p class="hero-sub">
+        TE Limited is a dynamic media, communication, and capacity-building company
+        delivering professional hosting and event moderation services, media production,
+        strategic media consultation, and transformative training programs for individuals,
+        brands, organizations, youths in underserved communities and marginalized groups.
+      </p>
+      <div class="hero-actions">
+        <a href="programs.html" class="btn btn-teal btn-lg">Explore Programs</a>
+        <a href="contact.html"  class="btn btn-outline btn-lg">Work With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     STATS BAND
+══════════════════════════════════════ -->
+<div class="stats-band">
+  <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+    <span class="stat-num">5+ Years</span>
+    <span class="stat-label">Industry Experience</span>
+  </div>
+  <div class="stat-card" data-aos="fade-up" data-aos-delay="80">
+    <span class="stat-num">500+ People</span>
+    <span class="stat-label">Trained Through Programs</span>
+  </div>
+  <div class="stat-card" data-aos="fade-up" data-aos-delay="160">
+    <span class="stat-num">8+ Years</span>
+    <span class="stat-label">Youth &amp; Community Impact</span>
+  </div>
+  <div class="stat-card" data-aos="fade-up" data-aos-delay="240">
+    <span class="stat-num">50+</span>
+    <span class="stat-label">Projects Executed</span>
+  </div>
+  <div class="stat-card" data-aos="fade-up" data-aos-delay="320">
+    <span class="stat-num">Multiple</span>
+    <span class="stat-label">Public &amp; Private Sector Clients</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PARTNERS
+══════════════════════════════════════ -->
+<section class="partners-wrap">
+  <p class="partners-label">Funded By</p>
+  <div class="partners-single">
+    <img src="assets/partners/funded-by-eu.jpg" alt="Funded by the European Union">
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MISSION
+══════════════════════════════════════ -->
+<section class="mission-section" id="mission">
+  <div class="container">
+    <div class="split-grid">
+
+      <div class="split-image-wrap" data-aos="fade-right" data-aos-duration="900">
+        <img src="assets/gallery/community-meeting.jpg" alt="Youth at Toria's Hub">
+      </div>
+
+      <div class="split-content" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        <span class="label">Why This Work Matters</span>
+        <h2 class="h2">Closing the gap in the <em>digital economy</em></h2>
+        <p class="body-text">Artificial intelligence and digital technologies are transforming industries and redefining the future of work.</p>
+        <p class="body-text" style="margin-top:1rem">Yet young people remain significantly underrepresented in technology fields, particularly across developing economies.</p>
+        <p class="body-text" style="margin-top:1rem">Toria's Hub works to ensure African girls and young women gain the skills, mentorship, and opportunities needed to participate fully in the digital economy.</p>
+        <div class="split-btns">
+          <a href="about.html" class="btn btn-outline">Learn About Us</a>
+          <button onclick="openLeadModal('homepage')" class="btn btn-outline">Download Impact Report</button>
+        </div>
+        <div class="award-badge" data-aos="zoom-in" data-aos-delay="400">
+          <div class="award-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 15l-2 5 2-1 2 1-2-5zm0-13C7.03 2 3 6.03 3 11c0 2.12.74 4.07 1.97 5.61L3 22l5-2 5 2 5-2 5 2-1.97-5.39C20.26 15.07 21 13.12 21 11c0-4.97-4.03-9-9-9z"/>
+              <circle cx="12" cy="11" r="4"/>
+            </svg>
+          </div>
+          <div class="award-text">
+            <strong>Youth Empowerment Award 2023</strong>
+            <span>Recognised globally for the YouthCoding project</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PROGRAMS (Stacking Cards — Jyve style)
+══════════════════════════════════════ -->
+<section class="stacking-section" id="programs">
+  <div class="container">
+    <div class="stacking-header" data-aos="fade-up">
+      <span class="label">Our Programs</span>
+      <h2 class="h2" style="margin-bottom:0">Programs that <em>change lives</em></h2>
+    </div>
+
+    <div class="stack-cards">
+      <!-- Card 1 -->
+      <div class="stack-card">
+        <div class="stack-content">
+          <div class="stack-num">01</div>
+          <span class="stack-chip">Training &amp; Capacity Development</span>
+          <h3 class="stack-title">TE Mastery Hub</h3>
+          <p class="stack-desc">Our training arm — helping individuals, teams, and brands build modern skills in digital media, virtual events management, public speaking, presentation, and digital marketing strategy.</p>
+          <a href="programs.html#mastery-hub" class="stack-cta">
+            See Courses
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+        <div class="stack-img">
+          <img src="assets/gallery/school-visit.jpg" alt="TE Mastery Hub training">
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="stack-card flip">
+        <div class="stack-content">
+          <div class="stack-num">02</div>
+          <span class="stack-chip">Youth Empowerment &middot; TCCSDAE</span>
+          <h3 class="stack-title">NextGen Creatives</h3>
+          <p class="stack-desc">Transformative coaching for creative skill development and entrepreneurship — equipping underserved youth with practical media and creative skills for income generation and self-reliance.</p>
+          <a href="programs.html#nextgen-creatives" class="stack-cta">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+        <div class="stack-img">
+          <img src="assets/gallery/community-market.jpg" alt="NextGen Creatives program">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="stack-card">
+        <div class="stack-content">
+          <div class="stack-num">03</div>
+          <span class="stack-chip">Inclusion &amp; Empowerment</span>
+          <h3 class="stack-title">TransformHer Initiative</h3>
+          <p class="stack-desc">Empowering young women, girls, and marginalized groups with creative, digital, and entrepreneurial skills while promoting inclusion, confidence, and active participation in society.</p>
+          <a href="programs.html#transformher" class="stack-cta">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+        <div class="stack-img">
+          <img src="assets/gallery/woman-ai.jpg" alt="TransformHer Initiative">
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="stack-card flip">
+        <div class="stack-content">
+          <div class="stack-num">04</div>
+          <span class="stack-chip">Outreach &amp; Care</span>
+          <h3 class="stack-title">Community Impact Projects</h3>
+          <p class="stack-desc">Meaningful community-centered initiatives — orphanage outreach, mental health awareness for children and youth, community support, and seasonal giving programs.</p>
+          <a href="programs.html#community-impact" class="stack-cta">
+            See Projects
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+        <div class="stack-img">
+          <img src="assets/gallery/community-meeting.jpg" alt="Community Impact Projects">
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem; text-align:center" data-aos="fade-up">
+      <a href="programs.html" class="btn btn-teal btn-lg">View All Programs</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PHILOSOPHY / ECOSYSTEM
+══════════════════════════════════════ -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="philosophy-intro" data-aos="fade-up">
+      <span class="label">Our Impact Ecosystem</span>
+      <h2 class="h2">Practical pathways for <em>real growth</em></h2>
+      <p class="body-text">TE Limited creates practical pathways for growth by combining media, skills development, visibility, entrepreneurship, and community empowerment.</p>
+    </div>
+
+    <div class="gray-area">
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="phil-num">01</div>
+        <h3>Skills Development</h3>
+        <p>Training individuals and communities with practical, income-relevant skills.</p>
+      </div>
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="phil-num">02</div>
+        <h3>Media Excellence</h3>
+        <p>Helping brands and organizations communicate with impact.</p>
+      </div>
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="phil-num">03</div>
+        <h3>Youth Empowerment</h3>
+        <p>Creating opportunities for young people through media, creative, and digital training.</p>
+      </div>
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="180">
+        <div class="phil-num">04</div>
+        <h3>Women &amp; Inclusion</h3>
+        <p>Supporting women, girls, and marginalized groups with access, confidence, and skills.</p>
+      </div>
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="phil-num">05</div>
+        <h3>Entrepreneurship Growth</h3>
+        <p>Teaching monetization, business thinking, and sustainable income pathways.</p>
+      </div>
+      <div class="phil-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="phil-num">06</div>
+        <h3>Community Impact</h3>
+        <p>Driving outreach projects that improve wellbeing and social development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     STORIES
+══════════════════════════════════════ -->
+<section class="stories-section" id="stories">
+  <div class="container">
+    <div class="stories-header">
+      <div data-aos="fade-right">
+        <span class="label">Latest Impact Stories</span>
+        <h2 class="h2" style="margin-bottom:0">From <em>the field</em></h2>
+      </div>
+      <a href="stories.html" class="btn btn-outline" data-aos="fade-left">
+        View All Impact Stories
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="stories-grid">
+      <a href="stories.html" class="story-card" data-aos="fade-up" data-aos-delay="0">
+        <img src="assets/gallery/speakers-network.jpg" alt="First Class Speakers Network engagement" class="story-img">
+        <div class="story-body">
+          <p class="story-cat">Speaking Engagement</p>
+          <h3 class="story-title">First Class Speakers Network, Abuja</h3>
+          <p class="story-desc">TE Limited hosted and spoke at a leadership engagement for young corps members — practical insights on communication, confidence, and personal branding.</p>
+        </div>
+      </a>
+      <a href="stories.html" class="story-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/gallery/orphanage-visit.jpg" alt="Mother Theresa Children's Home outreach" class="story-img">
+        <div class="story-body">
+          <p class="story-cat">Community Impact</p>
+          <h3 class="story-title">Outreach at Mother Theresa Children's Home</h3>
+          <p class="story-desc">In partnership with Messentia Medicare Empowerment Foundation, we visited Mother Theresa Children's Home in Abuja for the 2025 Children's Day celebration.</p>
+        </div>
+      </a>
+      <a href="stories.html" class="story-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/gallery/speaking-event.jpg" alt="TEDx Baze University speakers management" class="story-img">
+        <div class="story-body">
+          <p class="story-cat">Events Leadership</p>
+          <h3 class="story-title">TEDx Baze University — Speakers Management</h3>
+          <p class="story-desc">TE Limited's management team was invited to be part of the official Speakers Management Team for TEDx Baze University, coordinating speaker engagement.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="label" data-aos="fade-up">Get Involved</span>
+      <h2 class="h2" data-aos="fade-up" data-aos-delay="60">Be part of the <em>movement</em></h2>
+      <p class="body-text" data-aos="fade-up" data-aos-delay="120">
+        Whether you want to support a young person's journey, bring your organisation's resources,
+        or help spread opportunity — there's a place for you here.
+      </p>
+      <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+        <a href="programs.html"     class="btn btn-teal btn-lg">Apply to a Program</a>
+        <a href="get-involved.html" class="btn btn-outline btn-lg">Partner with Toria's Hub</a>
+        <a href="get-involved.html#donate" class="btn btn-outline btn-lg">Support Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Toria's<span>Hub</span></div>
+        <p>An African world where youth are proportionally represented as digital and technical leaders. Empowering young people to excel in technology since 2016.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/"   target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/"  target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/"  target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Organisation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#team">Our Team</a></li>
+          <li><a href="about.html">Mission &amp; Vision</a></li>
+          <li><a href="about.html">Recognition</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="programs.html#youthcoding">YouthCoding</a></li>
+          <li><a href="programs.html#youth-in-ai">Youth in AI</a></li>
+          <li><a href="programs.html#women-in-ai">Young Women in AI</a></li>
+          <li><a href="programs.html#teachers">AI Teachers Fellowship</a></li>
+          <li><a href="programs.html">All Programs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li class="footer-contact-item">
+            <strong>Address</strong>Lagos, Nigeria
+          </li>
+          <li class="footer-contact-item">
+            <strong>Email</strong>
+            <a href="mailto:info@toriashub.org">info@toriashub.org</a>
+          </li>
+          <li class="footer-contact-item">
+            <strong>Phone</strong>+234 000 000 0000
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Toria's Hub Youth Foundation. All rights reserved.</p>
+      <p>Empowering African youth in the digital and AI-driven future.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════
+     LEAD CAPTURE MODAL
+══════════════════════════════════════ -->
+<div id="leadCaptureModal" class="lead-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+  <div class="lead-modal-card">
+    <button class="lead-modal-close" onclick="closeLeadModal()" aria-label="Close">&#x2715;</button>
+    <div class="lead-modal-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+    </div>
+    <h2 class="lead-modal-title" id="leadModalTitle">Download the Impact Report</h2>
+    <p class="lead-modal-sub">Enter your details to access our impact report — stories, data, and insights from across Africa.</p>
+    <form id="leadCaptureForm" novalidate>
+      <div class="lead-form-group">
+        <label for="leadFirstName">First Name</label>
+        <input type="text" id="leadFirstName" name="firstName" class="lead-input" placeholder="e.g. Amina" autocomplete="given-name" required>
+        <span class="lead-field-error" id="leadFirstNameError"></span>
+      </div>
+      <div class="lead-form-group">
+        <label for="leadEmail">Email Address</label>
+        <input type="email" id="leadEmail" name="email" class="lead-input" placeholder="you@example.com" autocomplete="email" required>
+        <span class="lead-field-error" id="leadEmailError"></span>
+      </div>
+      <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">Download Report</button>
+    </form>
+    <p class="lead-modal-privacy">We respect your privacy. No spam — just impact updates from Toria's Hub.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

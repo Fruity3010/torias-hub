@@ -1,0 +1,154 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getAbout} from '~/lib/queries'
+import {imgPath, btnClass} from '~/lib/util'
+
+const [siteData, d] = await Promise.all([getSite(), getAbout()])
+
+const heroImg = imgPath(d?.heroImage, '/assets/gallery/community-meeting.jpg')
+const storyParagraphs = (d?.storyParagraphs?.length ? d.storyParagraphs : []) as string[]
+const mvvCards = (d?.mvvCards?.length ? d.mvvCards : []) as any[]
+const timeline = (d?.timelineItems?.length ? d.timelineItems : []) as any[]
+const team = (d?.teamMembers?.length ? d.teamMembers : []) as any[]
+const stats = (d?.stats?.length ? d.stats : []) as any[]
+const ctaButtons = (d?.ctaButtons?.length ? d.ctaButtons : []) as any[]
+
+const iconPaths: Record<string, string> = {
+  target: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zm0-4a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-4a2 2 0 1 1 0-4 2 2 0 0 1 0 4z',
+  eye: 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+  star: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+}
+---
+
+<Layout title={d?.seo?.title || "About Us — Toria's Hub"} description={d?.seo?.description} active="about" site={siteData}>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d?.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d?.heroTitleLine1 || 'About'}<br/><span class="teal">{d?.heroTitleLine2 || ''}</span></h1>
+      {d?.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+{(storyParagraphs.length || d?.storyHeading) && (
+  <section class="mission-section">
+    <div class="container">
+      <div class="split-grid">
+        <div class="split-image-wrap" data-aos="fade-right" data-aos-duration="900">
+          <img src={imgPath(d?.storyImage, '/assets/gallery/girlsinai.jpg')} alt={d?.storyImageAlt || ''}/>
+        </div>
+        <div class="split-content" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+          {d?.storyLabel && <span class="label">{d.storyLabel}</span>}
+          {d?.storyHeading && <h2 class="h2">{d.storyHeading}</h2>}
+          {storyParagraphs.map((p, i) => (
+            <p class="body-text" style={i > 0 ? 'margin-top:1rem' : ''}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{mvvCards.length > 0 && (
+  <section class="philosophy-section section-alt-bg">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.mvvLabel && <span class="label">{d.mvvLabel}</span>}
+        {d?.mvvHeading && <h2 class="h2">{d.mvvHeading}</h2>}
+      </div>
+      <div class="mvv-grid">
+        {mvvCards.map((c, i) => (
+          <div class="mvv-card" data-aos="fade-up" data-aos-delay={i * 80}>
+            <div class="mvv-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d={iconPaths[c.icon] || iconPaths.star}/>
+              </svg>
+            </div>
+            <h3 class="mvv-title">{c.title}</h3>
+            <p class="mvv-desc">{c.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{timeline.length > 0 && (
+  <section class="timeline-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.timelineLabel && <span class="label">{d.timelineLabel}</span>}
+        {d?.timelineHeading && <h2 class="h2">{d.timelineHeading}</h2>}
+      </div>
+      <div class="timeline">
+        {timeline.map((t, i) => (
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay={i * 80}>
+            <div class={`timeline-dot${t.active ? ' active' : ''}`}></div>
+            <div class="timeline-year">{t.year}</div>
+            <h3 class="timeline-title">{t.title}</h3>
+            <p class="timeline-desc">{t.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{team.length > 0 && (
+  <section class="team-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.teamLabel && <span class="label">{d.teamLabel}</span>}
+        {d?.teamHeading && <h2 class="h2">{d.teamHeading}</h2>}
+        {d?.teamIntro && <p class="body-text">{d.teamIntro}</p>}
+      </div>
+      <div class="team-grid">
+        {team.map((m, i) => (
+          <div class="team-card" data-aos="fade-up" data-aos-delay={i * 100}>
+            <div class="team-img-wrap">
+              <img src={imgPath(m.photo)} alt={m.photoAlt || m.name}/>
+              <div class="team-img-overlay"></div>
+            </div>
+            <h4 class="team-name">{m.name}</h4>
+            {m.role && <p class="team-role">{m.role}</p>}
+            {m.bio && <p class="team-bio">{m.bio}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{stats.length > 0 && (
+  <div class="stats-band">
+    {stats.map((s, i) => (
+      <div class="stat-card" data-aos="fade-up" data-aos-delay={i * 80}>
+        <span class="stat-num">{s.value}</span>
+        <span class="stat-label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+)}
+
+{(d?.ctaHeading || ctaButtons.length > 0) && (
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        {d?.ctaLabel && <span class="label" data-aos="fade-up">{d.ctaLabel}</span>}
+        {d?.ctaHeading && <h2 class="h2" data-aos="fade-up" data-aos-delay="60">{d.ctaHeading}</h2>}
+        {d?.ctaBody && <p class="body-text" data-aos="fade-up" data-aos-delay="120">{d.ctaBody}</p>}
+        <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+          {ctaButtons.map((b) => (
+            <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+</Layout>

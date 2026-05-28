@@ -1,0 +1,197 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getContact} from '~/lib/queries'
+import {imgPath} from '~/lib/util'
+
+const [siteData, d] = await Promise.all([getSite(), getContact()])
+const heroImg = imgPath(d?.heroImage, '/assets/gallery/speakers-network.jpg')
+const methods = (d?.methods?.length ? d.methods : []) as any[]
+const topics = (d?.formTopics?.length ? d.formTopics : []) as any[]
+const hours = (d?.sidebarHours?.length ? d.sidebarHours : []) as any[]
+const faqs = (d?.faqItems?.length ? d.faqItems : []) as any[]
+
+const methodIcons: Record<string, string> = {
+  email: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6',
+  phone: 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z',
+  pin: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0zM12 13a3 3 0 1 1 0-6 3 3 0 0 1 0 6z',
+}
+---
+
+<Layout title={d?.seo?.title || "Contact Us — Toria's Hub"} description={d?.seo?.description} active="contact" site={siteData}>
+
+<section class="page-hero page-hero-sm">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d?.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d?.heroTitleLine1 || "Let's start a"} <span class="teal">{d?.heroTitleLine2 || 'conversation'}</span></h1>
+      {d?.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+{methods.length > 0 && (
+  <section class="contact-methods-section">
+    <div class="container">
+      <div class="contact-methods-grid">
+        {methods.map((m, i) => (
+          <div class="contact-method" data-aos="fade-up" data-aos-delay={i * 80}>
+            <div class="contact-method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d={methodIcons[m.icon] || methodIcons.email}/>
+              </svg>
+            </div>
+            <h3 class="contact-method-title">{m.title}</h3>
+            {m.description && <p class="contact-method-desc">{m.description}</p>}
+            {m.linkHref
+              ? <a href={m.linkHref} class="contact-method-link">{m.linkLabel}</a>
+              : <span class="contact-method-link">{m.linkLabel}</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="contact-form-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-form-wrap" data-aos="fade-right">
+        {d?.formLabel && <span class="label">{d.formLabel}</span>}
+        {d?.formHeading && <h2 class="h2">{d.formHeading}</h2>}
+        {d?.formIntro && <p class="body-text" style="margin-bottom:2.5rem">{d.formIntro}</p>}
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label for="cName">Full Name</label>
+              <input type="text" id="cName" name="name" placeholder="e.g. Amina Okafor" autocomplete="name" required/>
+              <span class="contact-error" id="cNameError"></span>
+            </div>
+            <div class="contact-field">
+              <label for="cEmail">Email Address</label>
+              <input type="email" id="cEmail" name="email" placeholder="you@example.com" autocomplete="email" required/>
+              <span class="contact-error" id="cEmailError"></span>
+            </div>
+          </div>
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label for="cPhone">Phone (optional)</label>
+              <input type="tel" id="cPhone" name="phone" placeholder="+234 000 000 0000" autocomplete="tel"/>
+            </div>
+            <div class="contact-field">
+              <label for="cReason">I'm reaching out about</label>
+              <select id="cReason" name="reason" required>
+                <option value="">Select a topic…</option>
+                {topics.map((t) => (
+                  <option value={t.value}>{t.label}</option>
+                ))}
+              </select>
+              <span class="contact-error" id="cReasonError"></span>
+            </div>
+          </div>
+          <div class="contact-field">
+            <label for="cMessage">Your Message</label>
+            <textarea id="cMessage" name="message" rows="6" placeholder="Tell us a bit about what you're looking for…" required></textarea>
+            <span class="contact-error" id="cMessageError"></span>
+          </div>
+          <div class="contact-consent">
+            <input type="checkbox" id="cConsent" name="consent" required/>
+            <label for="cConsent">I agree to be contacted by Toria's Hub regarding my inquiry.</label>
+          </div>
+          <button type="submit" class="btn btn-teal btn-lg" id="cSubmit">
+            <span>Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div id="cSuccess" class="contact-success">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{d?.formSuccessText || "Thanks — your message is on its way."}</span>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-side" data-aos="fade-left" data-aos-delay="120">
+        {hours.length > 0 && (
+          <div class="contact-card">
+            <h4 class="contact-card-title">Office Hours</h4>
+            <ul class="contact-card-list">
+              {hours.map((h) => (
+                <li><span>{h.days}</span><span>{h.hours}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {(d?.sidebarHeadquartersTitle || d?.sidebarHeadquartersBody) && (
+          <div class="contact-card">
+            <h4 class="contact-card-title">{d.sidebarHeadquartersTitle || 'Headquarters'}</h4>
+            {d.sidebarHeadquartersBody && (
+              <p class="contact-card-text" set:html={d.sidebarHeadquartersBody.replace(/\n/g, '<br/>')}/>
+            )}
+            <p class="contact-card-text" style="margin-top:0.75rem">
+              {siteData?.email && <a href={`mailto:${siteData.email}`} class="contact-link">{siteData.email}</a>}
+              {siteData?.email && <br/>}
+              {siteData?.phone && <a href={`tel:${siteData.phone.replace(/\s/g, '')}`} class="contact-link">{siteData.phone}</a>}
+            </p>
+          </div>
+        )}
+      </aside>
+    </div>
+  </div>
+</section>
+
+{faqs.length > 0 && (
+  <section class="faq-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d?.faqLabel && <span class="label">{d.faqLabel}</span>}
+        {d?.faqHeading && <h2 class="h2">{d.faqHeading}</h2>}
+      </div>
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details class="faq-item" data-aos="fade-up" data-aos-delay={i * 60}>
+            <summary><span>{f.question}</span><span class="faq-icon"></span></summary>
+            <p set:html={f.answer}/>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var fields = [
+        { id: 'cName',    err: 'cNameError',    msg: 'Please enter your name.' },
+        { id: 'cEmail',   err: 'cEmailError',   msg: 'Please enter a valid email.' },
+        { id: 'cReason',  err: 'cReasonError',  msg: 'Please choose a topic.' },
+        { id: 'cMessage', err: 'cMessageError', msg: 'Please add a short message.' }
+      ];
+      var ok = true;
+      fields.forEach(function(f) {
+        var el = document.getElementById(f.id);
+        var er = document.getElementById(f.err);
+        var val = el.value.trim();
+        var bad = !val || (f.id === 'cEmail' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+        if (bad) { er.textContent = f.msg; er.style.display = 'block'; el.classList.add('is-invalid'); ok = false; }
+        else { er.style.display = 'none'; el.classList.remove('is-invalid'); }
+      });
+      if (!document.getElementById('cConsent').checked) ok = false;
+      if (!ok) return;
+      var btn = document.getElementById('cSubmit');
+      btn.disabled = true;
+      btn.querySelector('span').textContent = 'Sending…';
+      setTimeout(function() {
+        e.target.reset();
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Send Message';
+        document.getElementById('cSuccess').classList.add('is-visible');
+        setTimeout(function() { document.getElementById('cSuccess').classList.remove('is-visible'); }, 6000);
+      }, 1200);
+    });
+  }
+</script>
+
+</Layout>

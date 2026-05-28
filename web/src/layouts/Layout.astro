@@ -1,0 +1,35 @@
+---
+import Header from '~/components/Header.astro'
+import Footer from '~/components/Footer.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  active?: 'home' | 'about' | 'programs' | 'stories' | 'contact'
+  site?: any
+}
+const {
+  title = "Toria's Hub",
+  description = "Toria's Hub equips African youth with digital skills, AI literacy, and mentorship to thrive in the evolving technology landscape.",
+  active = 'home',
+  site,
+} = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <Header active={active} site={site} />
+  <slot />
+  <Footer site={site} />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" is:inline></script>
+  <script src="/js/main.js" is:inline></script>
+</body>
+</html>

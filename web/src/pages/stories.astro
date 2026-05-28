@@ -1,0 +1,130 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getStories} from '~/lib/queries'
+import {imgPath} from '~/lib/util'
+
+const [siteData, d] = await Promise.all([getSite(), getStories()])
+const heroImg = imgPath(d?.heroImage, '/assets/gallery/speaking-event.jpg')
+const featured = d?.featured
+const filters = (d?.filters?.length ? d.filters : []) as any[]
+const stories = (d?.stories?.length ? d.stories : []) as any[]
+---
+
+<Layout title={d?.seo?.title || "Stories & Insights — Toria's Hub"} description={d?.seo?.description} active="stories" site={siteData}>
+
+<section class="page-hero page-hero-sm">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d?.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d?.heroTitleLine1 || 'From the'} <span class="teal">{d?.heroTitleLine2 || 'field'}</span></h1>
+      {d?.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+{featured && (
+  <section class="featured-story-section">
+    <div class="container">
+      <a href={featured.link || '#'} class="featured-story" data-aos="fade-up">
+        <div class="featured-story-img">
+          <img src={imgPath(featured.image)} alt={featured.imageAlt || featured.title}/>
+        </div>
+        <div class="featured-story-content">
+          <span class="story-cat">{featured.category}</span>
+          <h2 class="featured-story-title">{featured.title}</h2>
+          <p class="featured-story-desc">{featured.description}</p>
+          <span class="featured-story-cta">
+            Read the story
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+)}
+
+<section class="stories-section" style="padding-top:60px">
+  <div class="container">
+    {filters.length > 0 && (
+      <div class="stories-filter" data-aos="fade-up">
+        <button class="filter-pill is-active" data-filter="all">All</button>
+        {filters.map((f) => (
+          <button class="filter-pill" data-filter={f.slug}>{f.label}</button>
+        ))}
+      </div>
+    )}
+    <div class="stories-grid" id="storiesGrid">
+      {stories.map((s, i) => (
+        <a href={s.link || '#'} class="story-card" data-cat={s.filterSlug} data-aos="fade-up" data-aos-delay={i % 3 * 80}>
+          <img src={imgPath(s.image)} alt={s.imageAlt || s.title} class="story-img"/>
+          <div class="story-body">
+            <p class="story-cat">{s.category}</p>
+            <h3 class="story-title">{s.title}</h3>
+            <p class="story-desc">{s.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+    <p id="noStories" class="no-stories">No stories in this category yet — check back soon.</p>
+  </div>
+</section>
+
+{d?.newsletterHeading && (
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner" data-aos="fade-up">
+        <div>
+          {d.newsletterLabel && <span class="label">{d.newsletterLabel}</span>}
+          <h2 class="h2">{d.newsletterHeading}</h2>
+          {d.newsletterBody && <p class="body-text" style="margin-top:0.75rem">{d.newsletterBody}</p>}
+        </div>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <input type="email" id="nlEmail" placeholder={d.newsletterPlaceholder || 'you@example.com'} autocomplete="email" required/>
+          <button type="submit" class="btn btn-teal">{d.newsletterButton || 'Subscribe'}</button>
+        </form>
+      </div>
+      <p id="nlSuccess" class="newsletter-success">{d.newsletterSuccess || "You're on the list. Watch your inbox."}</p>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  /* Stories filter */
+  var pills = document.querySelectorAll('.filter-pill');
+  var cards = document.querySelectorAll('#storiesGrid .story-card');
+  var noResults = document.getElementById('noStories');
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) { p.classList.remove('is-active'); });
+      pill.classList.add('is-active');
+      var f = pill.getAttribute('data-filter');
+      var visible = 0;
+      cards.forEach(function(c) {
+        var show = f === 'all' || c.getAttribute('data-cat') === f;
+        c.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  });
+
+  /* Newsletter */
+  var nlForm = document.getElementById('newsletterForm');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var em = document.getElementById('nlEmail');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value)) { em.classList.add('is-invalid'); return; }
+      em.classList.remove('is-invalid');
+      em.value = '';
+      document.getElementById('nlSuccess').classList.add('is-visible');
+      setTimeout(function() {
+        document.getElementById('nlSuccess').classList.remove('is-visible');
+      }, 5000);
+    });
+  }
+</script>
+
+</Layout>

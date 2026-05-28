@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Toria's Hub. Send us a message, find our office, or connect on social — we respond within 2 working days.">
+  <title>Contact Us — Toria's Hub</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="nav-logo">Toria's<span>Hub</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"        class="nav-link">Home</a></li>
+        <li><a href="about.html"        class="nav-link">About</a></li>
+        <li><a href="programs.html"     class="nav-link">Programs</a></li>
+        <li><a href="stories.html"      class="nav-link">Insights</a></li>
+        <li><a href="contact.html"      class="nav-link active">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="get-involved.html" class="btn btn-teal btn-sm nav-cta">GET INVOLVED</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="stories.html">Insights</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="get-involved.html" class="mob-cta">Get Involved</a></li>
+  </ul>
+</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero page-hero-sm">
+  <div class="page-hero-bg" style="background-image:url('assets/gallery/speakers-network.jpg')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-pattern" aria-hidden="true">
+    <svg viewBox="0 0 800 400" preserveAspectRatio="none">
+      <defs>
+        <pattern id="contactGrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(51,171,143,0.18)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="400" fill="url(#contactGrid)"/>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      <span class="hero-eyebrow">Get In Touch</span>
+      <h1 class="page-hero-title">Let's start a <span class="teal">conversation</span></h1>
+      <p class="page-hero-sub">
+        Whether you're a young person looking to join a program, a partner exploring
+        collaboration, or a journalist with a question — we'd love to hear from you.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT METHODS -->
+<section class="contact-methods-section">
+  <div class="container">
+    <div class="contact-methods-grid">
+      <div class="contact-method" data-aos="fade-up" data-aos-delay="0">
+        <div class="contact-method-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <h3 class="contact-method-title">Email Us</h3>
+        <p class="contact-method-desc">For general inquiries, partnerships, or media.</p>
+        <a href="mailto:info@toriashub.org" class="contact-method-link">info@toriashub.org</a>
+      </div>
+
+      <div class="contact-method" data-aos="fade-up" data-aos-delay="80">
+        <div class="contact-method-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="contact-method-title">Call Us</h3>
+        <p class="contact-method-desc">Mon–Fri, 9am–5pm WAT (West Africa Time).</p>
+        <a href="tel:+2340000000000" class="contact-method-link">+234 000 000 0000</a>
+      </div>
+
+      <div class="contact-method" data-aos="fade-up" data-aos-delay="160">
+        <div class="contact-method-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="contact-method-title">Visit Us</h3>
+        <p class="contact-method-desc">Stop by our community space in Lagos.</p>
+        <span class="contact-method-link">Lagos, Nigeria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT FORM + INFO -->
+<section class="contact-form-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-form-wrap" data-aos="fade-right">
+        <span class="label">Send a Message</span>
+        <h2 class="h2">Tell us how we can <em>help</em></h2>
+        <p class="body-text" style="margin-bottom:2.5rem">
+          Fill out the form below and a team member will get back to you within 2 working days.
+        </p>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label for="cName">Full Name</label>
+              <input type="text" id="cName" name="name" placeholder="e.g. Amina Okafor" autocomplete="name" required>
+              <span class="contact-error" id="cNameError"></span>
+            </div>
+            <div class="contact-field">
+              <label for="cEmail">Email Address</label>
+              <input type="email" id="cEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <span class="contact-error" id="cEmailError"></span>
+            </div>
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label for="cPhone">Phone (optional)</label>
+              <input type="tel" id="cPhone" name="phone" placeholder="+234 000 000 0000" autocomplete="tel">
+            </div>
+            <div class="contact-field">
+              <label for="cReason">I'm reaching out about</label>
+              <select id="cReason" name="reason" required>
+                <option value="">Select a topic…</option>
+                <option value="program">Joining a program</option>
+                <option value="partner">Partnership / collaboration</option>
+                <option value="mentor">Becoming a mentor</option>
+                <option value="donate">Donating / supporting</option>
+                <option value="media">Media / press</option>
+                <option value="other">Something else</option>
+              </select>
+              <span class="contact-error" id="cReasonError"></span>
+            </div>
+          </div>
+
+          <div class="contact-field">
+            <label for="cMessage">Your Message</label>
+            <textarea id="cMessage" name="message" rows="6" placeholder="Tell us a bit about what you're looking for…" required></textarea>
+            <span class="contact-error" id="cMessageError"></span>
+          </div>
+
+          <div class="contact-consent">
+            <input type="checkbox" id="cConsent" name="consent" required>
+            <label for="cConsent">I agree to be contacted by Toria's Hub regarding my inquiry.</label>
+          </div>
+
+          <button type="submit" class="btn btn-teal btn-lg" id="cSubmit">
+            <span>Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+
+          <div id="cSuccess" class="contact-success">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Thanks — your message is on its way. We'll be in touch within 2 working days.</span>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-side" data-aos="fade-left" data-aos-delay="120">
+        <div class="contact-card">
+          <h4 class="contact-card-title">Office Hours</h4>
+          <ul class="contact-card-list">
+            <li><span>Monday – Friday</span><span>9:00 – 17:00 WAT</span></li>
+            <li><span>Saturday</span><span>By appointment</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+          </ul>
+        </div>
+
+        <div class="contact-card">
+          <h4 class="contact-card-title">Headquarters</h4>
+          <p class="contact-card-text">
+            Toria's Hub Youth Foundation<br>
+            Lagos, Nigeria
+          </p>
+          <p class="contact-card-text" style="margin-top:0.75rem">
+            <a href="mailto:info@toriashub.org" class="contact-link">info@toriashub.org</a><br>
+            <a href="tel:+2340000000000" class="contact-link">+234 000 000 0000</a>
+          </p>
+        </div>
+
+        <div class="contact-card contact-card-social">
+          <h4 class="contact-card-title">Follow Along</h4>
+          <p class="contact-card-text" style="margin-bottom:1.25rem">
+            For day-to-day updates and stories from across the continent.
+          </p>
+          <div class="footer-socials" style="margin-top:0">
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/></svg></a>
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="philosophy-intro" data-aos="fade-up">
+      <span class="label">Frequently Asked</span>
+      <h2 class="h2">Quick <em>answers</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" data-aos="fade-up">
+        <summary>
+          <span>How do I apply to a program?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>Each program runs in cohorts. Visit the <a href="programs.html" class="contact-link">Programs page</a> to see what's open and submit an expression of interest — we'll notify you when applications go live.</p>
+      </details>
+
+      <details class="faq-item" data-aos="fade-up" data-aos-delay="60">
+        <summary>
+          <span>Do programs cost money?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>Our flagship programs are free for participants. They're funded by partners, donors, and sponsors who believe in what we're building.</p>
+      </details>
+
+      <details class="faq-item" data-aos="fade-up" data-aos-delay="120">
+        <summary>
+          <span>Can I become a mentor?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>Yes — mentors are the engine of our programs. Reach out via the form above and select "Becoming a mentor" so we can route your message to the right team.</p>
+      </details>
+
+      <details class="faq-item" data-aos="fade-up" data-aos-delay="180">
+        <summary>
+          <span>How can my organisation partner?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>We work with corporates, foundations, schools, and government bodies. Visit <a href="get-involved.html" class="contact-link">Get Involved</a> or send us a note and we'll set up a call.</p>
+      </details>
+
+      <details class="faq-item" data-aos="fade-up" data-aos-delay="240">
+        <summary>
+          <span>Do you operate outside Nigeria?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>Our headquarters is in Lagos but we run programs and partnerships across multiple African countries. Get in touch to discuss your region.</p>
+      </details>
+
+      <details class="faq-item" data-aos="fade-up" data-aos-delay="300">
+        <summary>
+          <span>Are you a registered nonprofit?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <p>Yes, Toria's Hub Youth Foundation operates as a registered nonprofit organisation. Contact us for tax and registration documentation if needed for your records.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Toria's<span>Hub</span></div>
+        <p>An African world where youth are proportionally represented as digital and technical leaders. Empowering young people to excel in technology since 2016.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/></svg></a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Organisation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#team">Our Team</a></li>
+          <li><a href="about.html">Mission &amp; Vision</a></li>
+          <li><a href="about.html">Recognition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="programs.html#youthcoding">YouthCoding</a></li>
+          <li><a href="programs.html#youth-in-ai">Youth in AI</a></li>
+          <li><a href="programs.html#women-in-ai">Young Women in AI</a></li>
+          <li><a href="programs.html#teachers">AI Teachers Fellowship</a></li>
+          <li><a href="programs.html">All Programs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li class="footer-contact-item"><strong>Address</strong>Lagos, Nigeria</li>
+          <li class="footer-contact-item"><strong>Email</strong><a href="mailto:info@toriashub.org">info@toriashub.org</a></li>
+          <li class="footer-contact-item"><strong>Phone</strong>+234 000 000 0000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Toria's Hub Youth Foundation. All rights reserved.</p>
+      <p>Empowering African youth in the digital and AI-driven future.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* Contact form */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var fields = [
+      { id: 'cName',    err: 'cNameError',    msg: 'Please enter your name.' },
+      { id: 'cEmail',   err: 'cEmailError',   msg: 'Please enter a valid email.' },
+      { id: 'cReason',  err: 'cReasonError',  msg: 'Please choose a topic.' },
+      { id: 'cMessage', err: 'cMessageError', msg: 'Please add a short message.' }
+    ];
+    var ok = true;
+    fields.forEach(function(f) {
+      var el  = document.getElementById(f.id);
+      var er  = document.getElementById(f.err);
+      var val = el.value.trim();
+      var bad = !val || (f.id === 'cEmail' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+      if (bad) {
+        er.textContent = f.msg; er.style.display = 'block';
+        el.classList.add('is-invalid'); ok = false;
+      } else {
+        er.style.display = 'none'; el.classList.remove('is-invalid');
+      }
+    });
+    if (!document.getElementById('cConsent').checked) ok = false;
+    if (!ok) return;
+
+    var btn = document.getElementById('cSubmit');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Sending…';
+    setTimeout(function() {
+      e.target.reset();
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Send Message';
+      document.getElementById('cSuccess').classList.add('is-visible');
+      setTimeout(function() {
+        document.getElementById('cSuccess').classList.remove('is-visible');
+      }, 6000);
+    }, 1200);
+  });
+</script>
+</body>
+</html>
