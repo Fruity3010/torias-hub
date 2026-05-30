@@ -1,6 +1,7 @@
 import {defineCliConfig} from 'sanity/cli'
 
 export default defineCliConfig({
+  studioHost: 'toria-experience',
   api: {
     projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'replace-with-your-project-id',
     dataset: process.env.SANITY_STUDIO_DATASET || 'production',
