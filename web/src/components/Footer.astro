@@ -8,6 +8,13 @@ const {site} = Astro.props
 const data = {...siteDefaults, ...(site || {})}
 const columns = data.footerColumns?.length ? data.footerColumns : siteDefaults.footerColumns
 const socials = data.socialLinks?.length ? data.socialLinks : siteDefaults.socialLinks
+const rawBrand = `${data.brandName || ''}${data.brandSuffix || ''}`
+const brandName = /toria/i.test(rawBrand) ? 'TE ' : data.brandName
+const brandSuffix = /toria/i.test(rawBrand) ? 'Limited' : data.brandSuffix
+const footerTagline = /toria/i.test(data.footerTagline || '') ? siteDefaults.footerTagline : data.footerTagline
+const copyright = /toria/i.test(data.copyright || '') ? siteDefaults.copyright : data.copyright
+const footerSubline = /african youth|digital and ai/i.test(data.footerSubline || '') ? siteDefaults.footerSubline : data.footerSubline
+const email = /toriashub/i.test(data.email || '') ? siteDefaults.email : data.email
 
 const socialPaths: Record<string, string> = {
   twitter: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z',
@@ -22,8 +29,8 @@ const socialPaths: Record<string, string> = {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">{data.brandName}<span>{data.brandSuffix}</span></div>
-        <p>{data.footerTagline}</p>
+        <div class="footer-logo">{brandName}<span>{brandSuffix}</span></div>
+        <p>{footerTagline}</p>
         <div class="footer-socials">
           {socials.map((s: any) => (
             <a href={s.url} target="_blank" rel="noopener" class="footer-social-link" aria-label={s.network}>
@@ -48,15 +55,15 @@ const socialPaths: Record<string, string> = {
         <h4>Contact</h4>
         <ul>
           {data.address && <li class="footer-contact-item"><strong>Address</strong>{data.address}</li>}
-          {data.email && <li class="footer-contact-item"><strong>Email</strong><a href={`mailto:${data.email}`}>{data.email}</a></li>}
+          {email && <li class="footer-contact-item"><strong>Email</strong><a href={`mailto:${email}`}>{email}</a></li>}
           {data.phone && <li class="footer-contact-item"><strong>Phone</strong>{data.phone}</li>}
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>{data.copyright}</p>
-      <p>{data.footerSubline}</p>
+      <p>{copyright}</p>
+      <p>{footerSubline}</p>
     </div>
   </div>
 </footer>
