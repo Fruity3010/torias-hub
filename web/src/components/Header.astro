@@ -20,6 +20,9 @@ const links = sourceLinks.some((l: any) => l.href === '/services')
       return acc
     }, [])
 const cta = data.navCta || siteDefaults.navCta
+const rawBrand = `${data.brandName || ''}${data.brandSuffix || ''}`
+const brandName = /toria/i.test(rawBrand) ? 'TE ' : data.brandName
+const brandSuffix = /toria/i.test(rawBrand) ? 'Limited' : data.brandSuffix
 
 // Map a few labels to active markers so the editor doesn't have to do it.
 function isActive(label: string) {
@@ -38,7 +41,7 @@ function isActive(label: string) {
 
 <header class="header" id="header">
   <div class="container header-inner">
-    <a href="/" class="nav-logo">{data.brandName}<span>{data.brandSuffix}</span></a>
+    <a href="/" class="nav-logo">{brandName}<span>{brandSuffix}</span></a>
     <nav>
       <ul class="nav-links" id="navLinks">
         {links.map((l: any) => (

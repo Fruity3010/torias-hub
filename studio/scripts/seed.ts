@@ -57,8 +57,8 @@ async function main() {
   const siteSettings = {
     _id: 'siteSettings',
     _type: 'siteSettings',
-    brandName: "Toria's",
-    brandSuffix: 'Hub',
+    brandName: 'TE ',
+    brandSuffix: 'Limited',
     navLinks: [
       {_key: 'n1', label: 'Home', href: '/'},
       {_key: 'n2', label: 'About', href: '/about'},
@@ -69,7 +69,7 @@ async function main() {
     ],
     navCta: {label: 'GET INVOLVED', href: '/get-involved', style: 'teal', size: 'sm'},
     footerTagline:
-      'An African world where youth are proportionally represented as digital and technical leaders. Empowering young people to excel in technology since 2016.',
+      'Media, communication, training, and community impact services for brands, organizations, and communities.',
     footerColumns: [
       {
         _key: 'fc1',
@@ -99,9 +99,9 @@ async function main() {
       {_key: 's2', network: 'facebook', url: 'https://facebook.com/'},
       {_key: 's3', network: 'linkedin', url: 'https://linkedin.com/'},
     ],
-    copyright: "© 2026 Toria's Hub Youth Foundation. All rights reserved.",
-    footerSubline: 'Empowering African youth in the digital and AI-driven future.',
-    email: 'info@toriashub.org',
+    copyright: '© 2026 TE Limited. All rights reserved.',
+    footerSubline: 'Building brands, empowering people, and creating impact.',
+    email: 'info@teltd.com.ng',
     phone: '+234 000 000 0000',
     address: 'Lagos, Nigeria',
   }
@@ -112,9 +112,9 @@ async function main() {
     _id: 'homePage',
     _type: 'homePage',
     seo: {
-      title: "Toria's Hub — Empowering African Youth in the Digital & AI Economy",
+      title: 'TE Limited | Media, Training & Community Impact',
       description:
-        "Toria's Hub equips African youth with digital skills, AI literacy, and mentorship to thrive in the evolving technology landscape.",
+        'TE Limited delivers media, communication, event hosting, training, and community impact services for brands, organizations, and communities.',
     },
     heroEyebrow: 'TE Limited · Driving Media & Creativity',
     heroTitleLine1: 'Building Brands.',
@@ -151,10 +151,10 @@ async function main() {
     missionParagraphs: [
       'Artificial intelligence and digital technologies are transforming industries and redefining the future of work.',
       'Yet young people remain significantly underrepresented in technology fields, particularly across developing economies.',
-      "Toria's Hub works to ensure African girls and young women gain the skills, mentorship, and opportunities needed to participate fully in the digital economy.",
+      'TE Limited works to ensure young people and underserved communities gain the skills, mentorship, and opportunities needed to participate fully in the creative and digital economy.',
     ],
     missionImage: await uploadImage('gallery/community-meeting.jpg'),
-    missionImageAlt: "Youth at Toria's Hub",
+    missionImageAlt: 'Youth at a TE Limited community program',
     missionCtas: [
       {_key: 'm1', label: 'Learn About Us', href: '/about', style: 'outline'},
       {_key: 'm2', label: 'Download Impact Report', href: '#lead', style: 'outline'},
@@ -225,13 +225,13 @@ async function main() {
     ctaBody: "Whether you want to support a young person's journey, bring your organisation's resources, or help spread opportunity — there's a place for you here.",
     ctaButtons: [
       {_key: 'cb1', label: 'Apply to a Program', href: '/programs', style: 'teal', size: 'lg'},
-      {_key: 'cb2', label: "Partner with Toria's Hub", href: '/get-involved', style: 'outline', size: 'lg'},
+      {_key: 'cb2', label: 'Partner with TE Limited', href: '/get-involved', style: 'outline', size: 'lg'},
       {_key: 'cb3', label: 'Support Our Work', href: '/get-involved#donate', style: 'outline', size: 'lg'},
     ],
     modalTitle: 'Download the Impact Report',
     modalSubtitle: 'Enter your details to access our impact report — stories, data, and insights from across Africa.',
     modalButtonLabel: 'Download Report',
-    modalPrivacyText: "We respect your privacy. No spam — just impact updates from Toria's Hub.",
+    modalPrivacyText: 'We respect your privacy. No spam — just impact updates from TE Limited.',
   }
 
   // ─── ABOUT PAGE ───────────────────────────────────────────────
@@ -239,7 +239,7 @@ async function main() {
   const aboutPage = {
     _id: 'aboutPage',
     _type: 'aboutPage',
-    seo: {title: "About Us — Toria's Hub", description: "Learn about Toria's Hub — our story, mission, vision, values, and the team building Africa's next generation of digital and AI leaders."},
+    seo: {title: 'About TE Limited', description: 'Learn about TE Limited, our media, training, communication, and community impact work.'},
     heroEyebrow: "About Toria's Hub",
     heroTitleLine1: "Building Africa's",
     heroTitleLine2: 'Digital Future',
@@ -300,7 +300,7 @@ async function main() {
   const programsPage = {
     _id: 'programsPage',
     _type: 'programsPage',
-    seo: {title: "Programs — Toria's Hub", description: "Explore Toria's Hub programs — YouthCoding, Youth in AI, Young Women in AI Initiative, and the AI Teachers Fellowship."},
+    seo: {title: 'Programs | TE Limited', description: 'Explore TE Limited training, youth empowerment, creative development, and community impact programs.'},
     heroEyebrow: 'Our Programs',
     heroTitleLine1: 'Programs that',
     heroTitleLine2: 'change lives',
@@ -365,7 +365,7 @@ async function main() {
   const storiesPage = {
     _id: 'storiesPage',
     _type: 'storiesPage',
-    seo: {title: "Stories & Insights — Toria's Hub", description: 'Stories from the field — events, community visits, programs, and the young people building Africa\'s digital future.'},
+    seo: {title: 'Stories & Insights | TE Limited', description: 'Read TE Limited stories, insights, events, community updates, and impact highlights.'},
     heroEyebrow: 'Stories & Insights',
     heroTitleLine1: 'From the',
     heroTitleLine2: 'field',
@@ -408,14 +408,14 @@ async function main() {
   const contactPage = {
     _id: 'contactPage',
     _type: 'contactPage',
-    seo: {title: "Contact Us — Toria's Hub", description: "Get in touch with Toria's Hub. Send us a message, find our office, or connect on social — we respond within 2 working days."},
+    seo: {title: 'Contact TE Limited', description: 'Contact TE Limited for media, communication, training, speaking, partnership, and community impact inquiries.'},
     heroEyebrow: 'Get In Touch',
     heroTitleLine1: "Let's start a",
     heroTitleLine2: 'conversation',
     heroSubtitle: "Whether you're a young person looking to join a program, a partner exploring collaboration, or a journalist with a question — we'd love to hear from you.",
     heroImage: await uploadImage('gallery/speakers-network.jpg'),
     methods: [
-      {_key: 'cm1', icon: 'email', title: 'Email Us', description: 'For general inquiries, partnerships, or media.', linkLabel: 'info@toriashub.org', linkHref: 'mailto:info@toriashub.org'},
+      {_key: 'cm1', icon: 'email', title: 'Email Us', description: 'For general inquiries, partnerships, or media.', linkLabel: 'info@teltd.com.ng', linkHref: 'mailto:info@teltd.com.ng'},
       {_key: 'cm2', icon: 'phone', title: 'Call Us', description: 'Mon–Fri, 9am–5pm WAT (West Africa Time).', linkLabel: '+234 000 000 0000', linkHref: 'tel:+2340000000000'},
       {_key: 'cm3', icon: 'pin', title: 'Visit Us', description: 'Stop by our community space in Lagos.', linkLabel: 'Lagos, Nigeria', linkHref: ''},
     ],
@@ -437,7 +437,7 @@ async function main() {
       {_key: 'sh3', days: 'Sunday', hours: 'Closed'},
     ],
     sidebarHeadquartersTitle: 'Headquarters',
-    sidebarHeadquartersBody: "Toria's Hub Youth Foundation\nLagos, Nigeria",
+    sidebarHeadquartersBody: 'TE Limited\nLagos, Nigeria',
     sidebarSocialTitle: 'Follow Along',
     sidebarSocialBody: 'For day-to-day updates and stories from across the continent.',
     faqLabel: 'Frequently Asked',
@@ -457,7 +457,7 @@ async function main() {
   const getInvolvedPage = {
     _id: 'getInvolvedPage',
     _type: 'getInvolvedPage',
-    seo: {title: "Get Involved — Toria's Hub", description: "Support Toria's Hub. Donate, partner with us, mentor a young person, or volunteer your skills. Be part of the movement."},
+    seo: {title: 'Get Involved | TE Limited', description: 'Partner with TE Limited, support community impact work, or get involved in training and empowerment programs.'},
     heroEyebrow: 'Get Involved',
     heroTitleLine1: 'Be part of',
     heroTitleLine2: 'the movement',

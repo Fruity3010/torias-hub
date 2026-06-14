@@ -4,8 +4,8 @@
 // override these defaults automatically.
 
 export const site = {
-  brandName: "Toria's",
-  brandSuffix: 'Hub',
+  brandName: 'TE ',
+  brandSuffix: 'Limited',
   navLinks: [
     {label: 'Home', href: '/'},
     {label: 'About', href: '/about'},
@@ -16,7 +16,7 @@ export const site = {
   ],
   navCta: {label: 'GET INVOLVED', href: '/get-involved', style: 'teal', size: 'sm'},
   footerTagline:
-    'An African world where youth are proportionally represented as digital and technical leaders. Empowering young people to excel in technology since 2016.',
+    'Media, communication, training, and community impact services for brands, organizations, and communities.',
   footerColumns: [
     {
       heading: 'Organisation',
@@ -44,18 +44,18 @@ export const site = {
     {network: 'facebook', url: 'https://facebook.com/'},
     {network: 'linkedin', url: 'https://linkedin.com/'},
   ],
-  copyright: '© 2026 Toria\'s Hub Youth Foundation. All rights reserved.',
-  footerSubline: 'Empowering African youth in the digital and AI-driven future.',
-  email: 'info@toriashub.org',
+  copyright: '© 2026 TE Limited. All rights reserved.',
+  footerSubline: 'Building brands, empowering people, and creating impact.',
+  email: 'info@teltd.com.ng',
   phone: '+234 000 000 0000',
   address: 'Lagos, Nigeria',
 }
 
 export const home = {
   seo: {
-    title: "Toria's Hub — Empowering African Youth in the Digital & AI Economy",
+    title: 'TE Limited | Media, Training & Community Impact',
     description:
-      "Toria's Hub equips African youth with digital skills, AI literacy, and mentorship to thrive in the evolving technology landscape.",
+      'TE Limited delivers media, communication, event hosting, training, and community impact services for brands, organizations, and communities.',
   },
   heroEyebrow: 'TE Limited · Driving Media & Creativity',
   heroTitleLine1: 'Building Brands.',
@@ -92,10 +92,10 @@ export const home = {
   missionParagraphs: [
     'Artificial intelligence and digital technologies are transforming industries and redefining the future of work.',
     'Yet young people remain significantly underrepresented in technology fields, particularly across developing economies.',
-    'Toria\'s Hub works to ensure African girls and young women gain the skills, mentorship, and opportunities needed to participate fully in the digital economy.',
+    'TE Limited works to ensure young people and underserved communities gain the skills, mentorship, and opportunities needed to participate fully in the creative and digital economy.',
   ],
   missionImage: {url: '/assets/gallery/community-meeting.jpg'},
-  missionImageAlt: "Youth at Toria's Hub",
+  missionImageAlt: 'Youth at a TE Limited community program',
   missionCtas: [
     {label: 'Learn About Us', href: '/about', style: 'outline'},
     {label: 'Download Impact Report', href: '#lead', style: 'outline'},
@@ -192,21 +192,21 @@ export const home = {
     "Whether you want to support a young person's journey, bring your organisation's resources, or help spread opportunity — there's a place for you here.",
   ctaButtons: [
     {label: 'Apply to a Program', href: '/programs', style: 'teal', size: 'lg'},
-    {label: "Partner with Toria's Hub", href: '/get-involved', style: 'outline', size: 'lg'},
+    {label: 'Partner with TE Limited', href: '/get-involved', style: 'outline', size: 'lg'},
     {label: 'Support Our Work', href: '/get-involved#donate', style: 'outline', size: 'lg'},
   ],
   modalTitle: 'Download the Impact Report',
   modalSubtitle:
     'Enter your details to access our impact report — stories, data, and insights from across Africa.',
   modalButtonLabel: 'Download Report',
-  modalPrivacyText: "We respect your privacy. No spam — just impact updates from Toria's Hub.",
+  modalPrivacyText: 'We respect your privacy. No spam — just impact updates from TE Limited.',
 }
 
 export const services = {
   seo: {
-    title: "Services — Toria's Hub",
+    title: 'Services | TE Limited',
     description:
-      "Professional media, communication, training, and community impact services from Toria's Hub.",
+      'Explore TE Limited services across event hosting, media production, communication consulting, training, and community impact.',
   },
   heroEyebrow: 'Services',
   heroTitleLine1: 'Media, Training',

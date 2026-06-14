@@ -13,14 +13,14 @@ export default defineType({
   fields: [
     defineField({
       name: 'brandName',
-      title: "Brand name (e.g. \"Toria's\")",
+      title: 'Brand name (e.g. "TE ")',
       type: 'string',
       group: 'brand',
       validation: (r) => r.required(),
     }),
     defineField({
       name: 'brandSuffix',
-      title: 'Brand suffix (e.g. "Hub" — coloured part)',
+      title: 'Brand suffix (e.g. "Limited" - coloured part)',
       type: 'string',
       group: 'brand',
     }),
