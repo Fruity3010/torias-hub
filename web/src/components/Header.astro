@@ -2,7 +2,7 @@
 import {site as siteDefaults} from '~/lib/defaults'
 
 interface Props {
-  active?: 'home' | 'about' | 'programs' | 'stories' | 'contact'
+  active?: 'home' | 'about' | 'services' | 'programs' | 'stories' | 'contact'
   site?: any
 }
 const {active = 'home', site} = Astro.props
@@ -11,7 +11,14 @@ const data = {
   ...siteDefaults,
   ...(site || {}),
 }
-const links = data.navLinks?.length ? data.navLinks : siteDefaults.navLinks
+const sourceLinks = data.navLinks?.length ? data.navLinks : siteDefaults.navLinks
+const links = sourceLinks.some((l: any) => l.href === '/services')
+  ? sourceLinks
+  : sourceLinks.reduce((acc: any[], link: any) => {
+      if (link.href === '/programs') acc.push({label: 'Services', href: '/services'})
+      acc.push(link)
+      return acc
+    }, [])
 const cta = data.navCta || siteDefaults.navCta
 
 // Map a few labels to active markers so the editor doesn't have to do it.
@@ -19,6 +26,7 @@ function isActive(label: string) {
   const map: Record<string, string> = {
     home: 'home',
     about: 'about',
+    services: 'services',
     programs: 'programs',
     insights: 'stories',
     stories: 'stories',

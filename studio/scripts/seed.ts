@@ -62,9 +62,10 @@ async function main() {
     navLinks: [
       {_key: 'n1', label: 'Home', href: '/'},
       {_key: 'n2', label: 'About', href: '/about'},
-      {_key: 'n3', label: 'Programs', href: '/programs'},
-      {_key: 'n4', label: 'Insights', href: '/stories'},
-      {_key: 'n5', label: 'Contact', href: '/contact'},
+      {_key: 'n3', label: 'Services', href: '/services'},
+      {_key: 'n4', label: 'Programs', href: '/programs'},
+      {_key: 'n5', label: 'Insights', href: '/stories'},
+      {_key: 'n6', label: 'Contact', href: '/contact'},
     ],
     navCta: {label: 'GET INVOLVED', href: '/get-involved', style: 'teal', size: 'sm'},
     footerTagline:
@@ -84,6 +85,7 @@ async function main() {
         _key: 'fc2',
         heading: 'Programs',
         links: [
+          {_key: 'l10', label: 'Services', href: '/services'},
           {_key: 'l5', label: 'YouthCoding', href: '/programs#youthcoding'},
           {_key: 'l6', label: 'Youth in AI', href: '/programs#youth-in-ai'},
           {_key: 'l7', label: 'Young Women in AI', href: '/programs#women-in-ai'},

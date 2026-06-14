@@ -9,6 +9,7 @@ export const site = {
   navLinks: [
     {label: 'Home', href: '/'},
     {label: 'About', href: '/about'},
+    {label: 'Services', href: '/services'},
     {label: 'Programs', href: '/programs'},
     {label: 'Insights', href: '/stories'},
     {label: 'Contact', href: '/contact'},
@@ -29,6 +30,7 @@ export const site = {
     {
       heading: 'Programs',
       links: [
+        {label: 'Services', href: '/services'},
         {label: 'YouthCoding', href: '/programs#youthcoding'},
         {label: 'Youth in AI', href: '/programs#youth-in-ai'},
         {label: 'Young Women in AI', href: '/programs#women-in-ai'},
@@ -198,4 +200,86 @@ export const home = {
     'Enter your details to access our impact report — stories, data, and insights from across Africa.',
   modalButtonLabel: 'Download Report',
   modalPrivacyText: "We respect your privacy. No spam — just impact updates from Toria's Hub.",
+}
+
+export const services = {
+  seo: {
+    title: "Services — Toria's Hub",
+    description:
+      "Professional media, communication, training, and community impact services from Toria's Hub.",
+  },
+  heroEyebrow: 'Services',
+  heroTitleLine1: 'Media, Training',
+  heroTitleLine2: '& Impact Services',
+  heroSubtitle:
+    'We help brands, organizations, and communities communicate clearly, build practical skills, and create measurable social impact.',
+  heroImage: {url: '/assets/gallery/speaking-event.jpg'},
+  introLabel: 'What We Do',
+  introHeading: 'Practical support for brands, teams, and communities',
+  introBody:
+    'Our services combine media expertise, facilitation, training, and community-centered program delivery. Each engagement is shaped around the audience, goals, and outcomes that matter most.',
+  services: [
+    {
+      anchorId: 'hosting',
+      chip: 'Events & Communication',
+      title: 'Hosting, Moderation & Speaking',
+      description:
+        'Professional event hosting, panel moderation, keynote speaking, and audience engagement for conferences, forums, launches, and community programs.',
+      features: ['Event hosting', 'Panel moderation', 'Keynote speaking', 'Program facilitation'],
+      image: {url: '/assets/gallery/speaking-event.jpg'},
+      imageAlt: 'Professional speaking engagement',
+      cta: {label: 'Book a Session', href: '/contact', style: 'teal'},
+    },
+    {
+      anchorId: 'media-production',
+      chip: 'Media & Content',
+      title: 'Media Production & Brand Storytelling',
+      description:
+        'Content strategy, media production, interviews, campaign storytelling, and communication assets that help organizations present their work with clarity and confidence.',
+      features: ['Content planning', 'Video and media support', 'Interview production', 'Campaign storytelling'],
+      image: {url: '/assets/gallery/hero-1.jpg'},
+      imageAlt: 'Media production support',
+      cta: {label: 'Start a Project', href: '/contact', style: 'outline'},
+    },
+    {
+      anchorId: 'training',
+      chip: 'Capacity Development',
+      title: 'Training & Skills Development',
+      description:
+        'Custom training for individuals, teams, and young people across digital media, public speaking, presentation skills, virtual event management, and digital marketing.',
+      features: ['Corporate workshops', 'Youth training', 'Digital media skills', 'Public speaking coaching'],
+      image: {url: '/assets/gallery/school-visit.jpg'},
+      imageAlt: 'Training workshop',
+      cta: {label: 'Explore Training', href: '/programs', style: 'teal'},
+    },
+    {
+      anchorId: 'consulting',
+      chip: 'Strategy',
+      title: 'Media & Communication Consulting',
+      description:
+        'Strategic guidance for brands and organizations that need stronger messaging, clearer audience engagement, and better communication systems.',
+      features: ['Messaging strategy', 'Audience engagement', 'Media planning', 'Brand positioning'],
+      image: {url: '/assets/gallery/community-meeting.jpg'},
+      imageAlt: 'Communication strategy session',
+      cta: {label: 'Talk to Us', href: '/contact', style: 'outline'},
+    },
+  ],
+  processLabel: 'How We Work',
+  processHeading: 'A clear path from brief to delivery',
+  processIntro:
+    'We keep projects focused: understand the goal, shape the right approach, deliver with care, and review the outcome.',
+  processSteps: [
+    {title: 'Discover', description: 'We clarify your goals, audience, timeline, and success measures.'},
+    {title: 'Design', description: 'We shape the service, content, or training plan around the required outcome.'},
+    {title: 'Deliver', description: 'We execute the engagement with strong facilitation, production, and project coordination.'},
+    {title: 'Review', description: 'We capture feedback, learnings, and recommended next steps.'},
+  ],
+  ctaLabel: 'Work With Us',
+  ctaHeading: 'Need a service tailored to your team or community?',
+  ctaBody:
+    'Tell us what you are building, planning, or trying to improve. We will recommend the most useful way to support it.',
+  ctaButtons: [
+    {label: 'Contact Us', href: '/contact', style: 'teal', size: 'lg'},
+    {label: 'View Programs', href: '/programs', style: 'outline', size: 'lg'},
+  ],
 }

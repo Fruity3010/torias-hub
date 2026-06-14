@@ -186,9 +186,9 @@ a { color: inherit; text-decoration: none; }
    2. HERO
 ══════════════════════════════════════ */
 .hero {
-  position: relative; height: 100dvh; min-height: 640px;
+  position: relative; min-height: 540px;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding-bottom: 90px; background: #000; overflow: hidden;
+  padding: 200px 0 90px; background: #000; overflow: hidden;
 }
 .hero-slideshow { position: absolute; inset: 0; }
 .hero-slide {
@@ -213,6 +213,7 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(ellipse 80% 60% at 0% 100%, rgba(51,171,143,0.2) 0%, transparent 55%);
 }
 .hero .container { position: relative; z-index: 2; }
+.hero-inner { max-width: 720px; }
 
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -567,6 +568,7 @@ a { color: inherit; text-decoration: none; }
   .footer-grid{grid-template-columns:1fr;gap:2.5rem}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero-title{font-size:2.4rem}
+  .hero{padding:160px 0 60px;min-height:auto}
   .stack-content{padding:2rem}
   .stacking-section{padding:60px 0 100px}
 }
@@ -933,6 +935,82 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* =====================================================
+   16b. SERVICES
+   ===================================================== */
+.services-intro-section { padding: 90px 0 50px; background: #000; }
+.services-intro {
+  max-width: 760px;
+}
+.services-list-section { padding: 40px 0 110px; background: #000; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+}
+.service-card {
+  display: grid; grid-template-rows: auto 1fr;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.service-card:hover { border-color: rgba(51,171,143,0.45); transform: translateY(-3px); }
+.service-card-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-card2);
+}
+.service-card-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(65%);
+  transition: filter 0.5s, transform 0.5s;
+}
+.service-card:hover .service-card-image img { filter: grayscale(0%); transform: scale(1.03); }
+.service-card-body {
+  padding: 2rem;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.service-card-title {
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 800; line-height: 1.15;
+  color: #fff; margin: 1rem 0 0.85rem;
+}
+.service-card-desc {
+  font-size: 0.9rem; color: var(--muted);
+  line-height: 1.8;
+}
+.service-features {
+  grid-template-columns: 1fr;
+  margin-bottom: 1.75rem;
+}
+.service-process-section { padding: 110px 0; background: var(--bg-alt); }
+.service-process-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1.25rem; margin-top: 3.5rem;
+}
+.service-process-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.service-process-card:hover { border-color: rgba(51,171,143,0.45); transform: translateY(-3px); }
+.service-process-num {
+  display: block;
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.2em; color: var(--teal);
+  margin-bottom: 1rem;
+}
+.service-process-card h3 {
+  font-size: 1rem; font-weight: 750;
+  color: #fff; margin-bottom: 0.65rem;
+}
+.service-process-card p {
+  font-size: 0.84rem; color: var(--muted);
+  line-height: 1.75;
+}
+
+/* =====================================================
    17. GET INVOLVED
    ===================================================== */
 .ways-section { padding: 110px 0; background: #000; }
@@ -1161,6 +1239,8 @@ a { color: inherit; text-decoration: none; }
   .programs-overview-grid{grid-template-columns:repeat(2,1fr)}
   .pathway-svg{display:none}
   .pathway-nodes{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:1fr}
+  .service-process-grid{grid-template-columns:repeat(2,1fr)}
   .ways-grid{grid-template-columns:repeat(2,1fr)}
   .donate-grid{grid-template-columns:1fr;max-width:480px}
   .mv-grid{grid-template-columns:1fr}
@@ -1173,6 +1253,10 @@ a { color: inherit; text-decoration: none; }
   .page-hero-sm{padding:150px 0 50px}
   .program-features{grid-template-columns:1fr}
   .programs-overview-grid{grid-template-columns:1fr}
+  .services-intro-section{padding:70px 0 35px}
+  .services-list-section{padding:35px 0 80px}
+  .service-card-body{padding:1.5rem}
+  .service-process-grid{grid-template-columns:1fr}
   .ways-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto}
   .featured-story-content{padding:2rem}
@@ -1180,4 +1264,3 @@ a { color: inherit; text-decoration: none; }
   .timeline{padding-left:1.5rem}
   .timeline-dot{left:-1.5rem}
 }
-

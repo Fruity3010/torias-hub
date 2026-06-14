@@ -67,6 +67,18 @@ const PROGRAMS_QUERY = `*[_type == "programsPage"][0]{
   ctaButtons[]{label, href, style, size}
 }`
 
+const SERVICES_QUERY = `*[_type == "servicesPage"][0]{
+  seo,
+  heroEyebrow, heroTitleLine1, heroTitleLine2, heroSubtitle,
+  heroImage{asset->{url}},
+  introLabel, introHeading, introBody,
+  services[]{anchorId, chip, title, description, features, image{asset->{url}}, imageAlt, cta{label, href, style, size}},
+  processLabel, processHeading, processIntro,
+  processSteps[]{title, description},
+  ctaLabel, ctaHeading, ctaBody,
+  ctaButtons[]{label, href, style, size}
+}`
+
 const STORIES_QUERY = `*[_type == "storiesPage"][0]{
   seo,
   heroEyebrow, heroTitleLine1, heroTitleLine2, heroSubtitle,
@@ -125,6 +137,7 @@ export const getSite = () => fetchSafe<any>(SITE_QUERY)
 export const getHome = () => fetchSafe<any>(HOME_QUERY)
 export const getAbout = () => fetchSafe<any>(ABOUT_QUERY)
 export const getPrograms = () => fetchSafe<any>(PROGRAMS_QUERY)
+export const getServices = () => fetchSafe<any>(SERVICES_QUERY)
 export const getStories = () => fetchSafe<any>(STORIES_QUERY)
 export const getContact = () => fetchSafe<any>(CONTACT_QUERY)
 export const getGetInvolved = () => fetchSafe<any>(GET_INVOLVED_QUERY)

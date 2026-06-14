@@ -17,6 +17,9 @@ export const structure = (S: StructureBuilder) =>
         .title('About Page')
         .child(S.document().schemaType('aboutPage').documentId('aboutPage')),
       S.listItem()
+        .title('Services Page')
+        .child(S.document().schemaType('servicesPage').documentId('servicesPage')),
+      S.listItem()
         .title('Programs Page')
         .child(S.document().schemaType('programsPage').documentId('programsPage')),
       S.listItem()

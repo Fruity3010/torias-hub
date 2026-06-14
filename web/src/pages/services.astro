@@ -1,0 +1,110 @@
+---
+import Layout from '~/layouts/Layout.astro'
+import {getSite, getServices} from '~/lib/queries'
+import {services as serviceDefaults} from '~/lib/defaults'
+import {imgPath, merge, btnClass} from '~/lib/util'
+
+const [siteData, servicesData] = await Promise.all([getSite(), getServices()])
+const d = merge(serviceDefaults, servicesData)
+
+const serviceCards = (servicesData?.services?.length ? servicesData.services : serviceDefaults.services) as any[]
+const processSteps = (servicesData?.processSteps?.length ? servicesData.processSteps : serviceDefaults.processSteps) as any[]
+const ctaButtons = (servicesData?.ctaButtons?.length ? servicesData.ctaButtons : serviceDefaults.ctaButtons) as any[]
+const heroImg = imgPath(d.heroImage, '/assets/gallery/speaking-event.jpg')
+---
+
+<Layout title={d.seo?.title || serviceDefaults.seo.title} description={d.seo?.description || serviceDefaults.seo.description} active="services" site={siteData}>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style={`background-image:url('${heroImg}')`}></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <div class="page-hero-inner" data-aos="fade-up">
+      {d.heroEyebrow && <span class="hero-eyebrow">{d.heroEyebrow}</span>}
+      <h1 class="page-hero-title">{d.heroTitleLine1}<br/><span class="teal">{d.heroTitleLine2}</span></h1>
+      {d.heroSubtitle && <p class="page-hero-sub">{d.heroSubtitle}</p>}
+    </div>
+  </div>
+</section>
+
+<section class="services-intro-section">
+  <div class="container">
+    <div class="services-intro" data-aos="fade-up">
+      {d.introLabel && <span class="label">{d.introLabel}</span>}
+      {d.introHeading && <h2 class="h2">{d.introHeading}</h2>}
+      {d.introBody && <p class="body-text">{d.introBody}</p>}
+    </div>
+  </div>
+</section>
+
+{serviceCards.length > 0 && (
+  <section class="services-list-section">
+    <div class="container">
+      <div class="services-grid">
+        {serviceCards.map((s, i) => {
+          const features = (s.features?.length ? s.features : []) as string[]
+          return (
+            <article id={s.anchorId} class="service-card" data-aos="fade-up" data-aos-delay={i * 80}>
+              <div class="service-card-image">
+                <img src={imgPath(s.image, '/assets/gallery/community-meeting.jpg')} alt={s.imageAlt || s.title}/>
+              </div>
+              <div class="service-card-body">
+                {s.chip && <span class="stack-chip">{s.chip}</span>}
+                <h3 class="service-card-title">{s.title}</h3>
+                {s.description && <p class="service-card-desc">{s.description}</p>}
+                {features.length > 0 && (
+                  <ul class="program-features service-features">
+                    {features.map((f) => (
+                      <li><span class="program-feat-bullet"></span>{f}</li>
+                    ))}
+                  </ul>
+                )}
+                {s.cta && <a href={s.cta.href} class={btnClass(s.cta, {style: 'teal'})}>{s.cta.label}</a>}
+              </div>
+            </article>
+          )
+        })}
+      </div>
+    </div>
+  </section>
+)}
+
+{processSteps.length > 0 && (
+  <section class="service-process-section">
+    <div class="container">
+      <div class="philosophy-intro" data-aos="fade-up">
+        {d.processLabel && <span class="label">{d.processLabel}</span>}
+        {d.processHeading && <h2 class="h2">{d.processHeading}</h2>}
+        {d.processIntro && <p class="body-text">{d.processIntro}</p>}
+      </div>
+      <div class="service-process-grid">
+        {processSteps.map((step, i) => (
+          <div class="service-process-card" data-aos="fade-up" data-aos-delay={i * 80}>
+            <span class="service-process-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{(d.ctaHeading || ctaButtons.length > 0) && (
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        {d.ctaLabel && <span class="label" data-aos="fade-up">{d.ctaLabel}</span>}
+        {d.ctaHeading && <h2 class="h2" data-aos="fade-up" data-aos-delay="60">{d.ctaHeading}</h2>}
+        {d.ctaBody && <p class="body-text" data-aos="fade-up" data-aos-delay="120">{d.ctaBody}</p>}
+        <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
+          {ctaButtons.map((b) => (
+            <a href={b.href} class={btnClass(b, {style: 'teal', size: 'lg'})}>{b.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+</Layout>

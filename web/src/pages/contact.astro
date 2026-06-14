@@ -61,7 +61,11 @@ const methodIcons: Record<string, string> = {
         {d?.formLabel && <span class="label">{d.formLabel}</span>}
         {d?.formHeading && <h2 class="h2">{d.formHeading}</h2>}
         {d?.formIntro && <p class="body-text" style="margin-bottom:2.5rem">{d.formIntro}</p>}
-        <form id="contactForm" class="contact-form" novalidate>
+        <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact"/>
+          <p hidden>
+            <label>Do not fill this out: <input name="bot-field"/></label>
+          </p>
           <div class="contact-form-row">
             <div class="contact-field">
               <label for="cName">Full Name</label>
@@ -97,7 +101,7 @@ const methodIcons: Record<string, string> = {
           </div>
           <div class="contact-consent">
             <input type="checkbox" id="cConsent" name="consent" required/>
-            <label for="cConsent">I agree to be contacted by Toria's Hub regarding my inquiry.</label>
+            <label for="cConsent">I agree to be contacted by TE Limited regarding my inquiry.</label>
           </div>
           <button type="submit" class="btn btn-teal btn-lg" id="cSubmit">
             <span>Send Message</span>
@@ -159,6 +163,10 @@ const methodIcons: Record<string, string> = {
 )}
 
 <script is:inline>
+  function encodeContactForm(data) {
+    return new URLSearchParams(data).toString();
+  }
+
   var contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -183,13 +191,22 @@ const methodIcons: Record<string, string> = {
       var btn = document.getElementById('cSubmit');
       btn.disabled = true;
       btn.querySelector('span').textContent = 'Sending…';
-      setTimeout(function() {
-        e.target.reset();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeContactForm(new FormData(contactForm))
+      }).then(function() {
+        contactForm.reset();
         btn.disabled = false;
         btn.querySelector('span').textContent = 'Send Message';
         document.getElementById('cSuccess').classList.add('is-visible');
         setTimeout(function() { document.getElementById('cSuccess').classList.remove('is-visible'); }, 6000);
-      }, 1200);
+      }).catch(function() {
+        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Send Message';
+        alert('Sorry, your message could not be sent. Please try again or email us directly.');
+      });
     });
   }
 </script>

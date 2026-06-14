@@ -186,9 +186,9 @@ a { color: inherit; text-decoration: none; }
    2. HERO
 ══════════════════════════════════════ */
 .hero {
-  position: relative; height: 100dvh; min-height: 640px;
+  position: relative; min-height: 540px;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding-bottom: 90px; background: #000; overflow: hidden;
+  padding: 200px 0 90px; background: #000; overflow: hidden;
 }
 .hero-slideshow { position: absolute; inset: 0; }
 .hero-slide {
@@ -213,6 +213,7 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(ellipse 80% 60% at 0% 100%, rgba(51,171,143,0.2) 0%, transparent 55%);
 }
 .hero .container { position: relative; z-index: 2; }
+.hero-inner { max-width: 720px; }
 
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -566,6 +567,7 @@ a { color: inherit; text-decoration: none; }
   .footer-grid{grid-template-columns:1fr;gap:2.5rem}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero-title{font-size:2.4rem}
+  .hero{padding:160px 0 60px;min-height:auto}
   .stack-content{padding:2rem}
   .stacking-section{padding:60px 0 100px}
 }
@@ -1179,4 +1181,3 @@ a { color: inherit; text-decoration: none; }
   .timeline{padding-left:1.5rem}
   .timeline-dot{left:-1.5rem}
 }
-
